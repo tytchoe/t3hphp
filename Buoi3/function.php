@@ -20,5 +20,19 @@
         return $a + $b;
     }
     $c = sum(3,5);
-    echo "$c";
+    echo "$c".'<br>';
+
+    $a = ' T3H';
+    var_dump($a);
+    $b = trim("$a");
+    var_dump($b);
+
+    $str ='trung tam t3h';
+    $d = explode(' ',$str);
+    print_r($d);
+
+    $e = implode(' ', $d);
+    print_r($e)
+
+
 ?>
