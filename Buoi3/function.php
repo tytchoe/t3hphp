@@ -13,6 +13,7 @@
         echo "Ten : $name , tuoi : $age , dia chi : $address ".'<br>';
     }
     show_full_name('dung','20','px');
+    show_full_name('dung','20');
 
-    function show
+    
 ?>
