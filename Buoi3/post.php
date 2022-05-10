@@ -1,5 +1,5 @@
 <?php
-if (isset(_$_POST['fname'])){
+if (isset($_POST['fname'])){
     $fname = $_POST['fname'];
     print_r($fname);
 }
