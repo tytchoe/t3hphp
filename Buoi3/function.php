@@ -15,5 +15,10 @@
     show_full_name('dung','20','px');
     show_full_name('dung','20');
 
-    
+
+    function sum($a , $b){
+        return $a + $b;
+    }
+    $c = sum(3,5);
+    echo "$c";
 ?>
