@@ -1,4 +1,12 @@
 <?php
-    echo 'file 2';
+    echo 'file 2'.'<br>';
 
-    require 'file3.php';
+//    include_once 'file3.php';
+//
+//    include_once 'file3.php';
+
+    require_once 'file3.php';
+
+    require_once 'file3.php';
+
+
