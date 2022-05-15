@@ -6,8 +6,14 @@
     $arr_product = [
         'a','b','c','d'
     ];
-    print_r($arr_product);
+//    print_r($arr_product);
     echo '<br>';
+    var_dump($arr_product);
+
+    $str_product = json_encode($arr_product);
+    echo '<br>';
+    var_dump($str_product);
+
 
     echo count($arr_product);
     echo '<br>';
