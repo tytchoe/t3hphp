@@ -1,11 +1,15 @@
 <?php
-if (isset($_POST['fname'])){
-    $fname = $_POST['fname'];
-    print_r($fname);
+if (isset($_POST['name'])){
+    $name = $_POST['name'];
+    print_r($name);
 }
-if (isset($_POST['lname'])){
-    $lname = $_POST['lname'];
-    print_r($lname);
+if (isset($_POST['pass'])){
+    $pass = $_POST['pass'];
+    if (strlen($pass)<8){
+        $err_pass = 'do dai toi thieu la 8';
+//        print_r('do dai toi thieu la 8');
+    }
+    print_r($pass);
 }
 
 
@@ -20,10 +24,13 @@ if (isset($_POST['lname'])){
 <h2>HTML Forms Post</h2>
 
 <form action="" method="post">
-    <label for="fname">Username:</label><br>
-    <input type="text" id="fname" name="fname" value=""><br>
-    <label for="lname">Password:</label><br>
-    <input type="text" id="lname" name="lname" value=""><br><br>
+    <label for="name">Username:</label><br>
+    <input type="text" id="name" name="name" value=""><br>
+    <label for="pass">Password:</label><br>
+    <input type="text" id="pass" name="pass" value=""><br><br>
+    <?php if(!empty($err_pass)): ?>
+        <p style="color: red"><?= $err_pass ?></p>
+    <?php endif; ?>
     <input type="submit" value="Submit">
 </form>
 </body>
