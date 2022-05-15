@@ -1,20 +1,24 @@
 <?php
-    if (isset($_FILES['fileToUpload'])){
-        echo '<pre>';
-        var_dump($_FILES['fileToUpload']);
-        print_r($_FILES['fileToUpload']['name']);
-        $file_tmp_name = $_FILES['fileToUpload']['tmp_name'];
+if (isset($_FILES['fileToUpload'])) {
+    //echo '<pre>';
+    //print_r($_FILES['fileToUpload']);
 
-        move_uploaded_file($file_tmp_name , );
-    }else {
-        echo 'not image';
-    }
+    $file_name = $_FILES['fileToUpload']['name'];
+    $file_size = $_FILES['fileToUpload']['size'];
+    $file_tmp = $_FILES['fileToUpload']['tmp_name'];
+    $file_type = $_FILES['fileToUpload']['type'];
+
+    move_uploaded_file($file_tmp, "images/".$file_name);
+
+} else {
+    echo 'not image';
+}
 ?>
 <!DOCTYPE html>
 <html>
 <body>
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="" method="post" enctype="multipart/form-data">
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
     <input type="submit" value="Upload Image" name="submit">
