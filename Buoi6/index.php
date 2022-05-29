@@ -1,17 +1,36 @@
 <?php
+//$servername = "localhost";
+//$username = "root";
+//$password = "";
+//
+//// Create connection
+//$conn = new mysqli($servername, $username, $password);
+//
+//// Check connection
+//if ($conn->connect_error) {
+//    die("Connection failed: " . $conn->connect_error);
+//}
+//echo "Connected successfully";
+
 $servername = "localhost";
 $username = "root";
 $password = "";
+$dbname = "webbanhang";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $sql = "INSERT into brands (`name`,slug,position,is_active)
+VALUES ('t3h','t3h',1,1)";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+    echo "New record created successfully";
+} catch(PDOException $e) {
+    echo $sql . "<br>" . $e->getMessage();
 }
-echo "Connected successfully";
 
+$conn = null;
 
 //$servername = "localhost";
 //$username = "root";
