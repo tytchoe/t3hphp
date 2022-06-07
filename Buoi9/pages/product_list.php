@@ -41,16 +41,16 @@
                             <th>Hành Động</th>
                         </tr>
                         <?php foreach ($arrProducts as $product):?>
-                        <tr >
-                            <td><?= $product[0]; ?></td>
-                            <td><?= $product[1] ?></td>
-                            <td><?= number_format($product[2]) ?>đ</td>
-                            <td><?= $product[3] ?></td>
-                            <td>
-                                <button type="button" class="btn btn-primary btn-sm">Sửa</button>
-                                <button data-id="<?=$product[0]?>" type="button" class="btn btn-danger btn-sm btnDelete">Xóa</button>
-                            </td>
-                        </tr>
+                            <tr class="product-<?= $product[0] ?>">
+                                <td><?= $product[0] ?></td>
+                                <td><?= $product[1] ?></td>
+                                <td><?= number_format($product[2],0,',','.') ?>đ</td>
+                                <td><?= $product[3] ?></td>
+                                <td>
+                                    <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                    <button data-id="<?= $product[0] ?>" type="button" class="btn btn-danger btn-sm btnDelete">Xóa</button>
+                                </td>
+                            </tr>
                         <?php endforeach; ?>
                     </table>
                 </div>

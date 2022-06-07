@@ -23,12 +23,13 @@ if ($result = mysqli_query($conn,$sql)){
     mysqli_free_result($result);
 }
 
-if(isset($_POST['action'])&& isset($_POST['productID'])){
+if (isset($_POST['action']) && isset($_POST['productID'])) {
     $id = $_POST['productID'];
 
-    $sql_delete = 'DELETE FROM products WHERE id = $id';
+    $sql_delete = "DELETE FROM products WHERE id = $id";
 
-    mysqli_query($conn,$sql_delete);
+    mysqli_query($conn, $sql_delete);
+
 }
 
 
@@ -144,29 +145,28 @@ mysqli_close($conn);
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script type="text/javascript">
-    $( document ).ready(function () {
+    $( document ).ready(function() {
+        // buoc 1
         $('.btnDelete').click(function () {
             var id = $(this).attr('data-id');
-
-            var me = $(this);
+            var me =  $(this);
 
             $.ajax({
-                url :'',
-                type : 'POST',
-                data : {
-                    action : 'DELETE',
+                url : '',
+                type: 'POST',
+                data: {
+                    action: 'DELETE',
                     productID : id
                 },
-                success : function (res) {
-                    console.log('guithanhcong');
-                    me.closest('.product-'+id).remove();
+                success: function (res) {
+                    $('.product-'+id).remove();
                 },
-                error : function (res) {
+                error: function (res) {
 
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 </script>
 
 </body>
