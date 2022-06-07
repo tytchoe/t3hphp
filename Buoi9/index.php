@@ -1,3 +1,42 @@
+<?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webbanhang";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT id, name, price, stock FROM products;";
+
+$arrProducts = [];
+
+if ($result = mysqli_query($conn,$sql)){
+    while ($row = mysqli_fetch_row($result)){
+        $arrProducts[] = $row;
+    }
+    mysqli_free_result($result);
+}
+
+if(isset($_POST['action'])&& isset($_POST['productID'])){
+    $id = $_POST['productID'];
+
+    $sql_delete = 'DELETE FROM products WHERE id = $id';
+
+    mysqli_query($conn,$sql_delete);
+}
+
+
+mysqli_close($conn);
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,5 +143,31 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script type="text/javascript">
+    $( document ).ready(function () {
+        $('.btnDelete').click(function () {
+            var id = $(this).attr('data-id');
+
+            var me = $(this);
+
+            $.ajax({
+                url :'',
+                type : 'POST',
+                data : {
+                    action : 'DELETE',
+                    productID : id
+                },
+                success : function (res) {
+                    console.log('guithanhcong');
+                    me.closest('.product-'+id).remove();
+                },
+                error : function (res) {
+
+                }
+            })
+        })
+    })
+</script>
+
 </body>
 </html>
